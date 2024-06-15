@@ -3,14 +3,6 @@ Automation Mojo Data Sources Package
 ====================================
 This package provides a means for managing the information associated with data source configs.
 
-=========================
-Features of this Template
-=========================
-* Machine Setup
-* Virtual Environment Setup (Poetry)
-* PyPi Publishing
-* Sphinx Documentation
-
 ========================
 How to Use This Template
 ========================
