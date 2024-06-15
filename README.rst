@@ -1,7 +1,7 @@
-=======================
-python-package-template
-=======================
-This is a template repository that can be used to quickly create a python package project.
+====================================
+Automation Mojo Data Sources Package
+====================================
+This package provides a means for managing the information associated with data source configs.
 
 =========================
 Features of this Template
