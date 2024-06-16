@@ -1,7 +1,7 @@
 ====================================
-Automation Mojo Data Sources Package
+Automation Mojo Data Profiles Package
 ====================================
-This package provides a means for managing the information associated with data source configs.
+This package provides a means for managing the information associated with data source profiles / configs.
 
 ========================
 How to Use This Template
