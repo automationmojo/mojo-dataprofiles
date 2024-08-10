@@ -2,10 +2,12 @@
 from typing import Optional, Union
 
 class BaseDataProfile:
-
-    def __init__(self, name: str, *, profile_type: str, credential: Optional[str] = None):
-        self._name = name
-        self._profile_type = profile_type
+    """
+        The :class:`BaseDataProfiles` object serves as a base class for data source profile objects.
+    """
+    def __init__(self, identifier: str, *, category: str, credential: Optional[str] = None):
+        self._identifier = identifier
+        self._category = category
         self._credential = credential
         return
 
@@ -14,9 +16,9 @@ class BaseDataProfile:
         return self._credential
 
     @property
-    def name(self) -> str:
-        return self._name
+    def identifier(self) -> str:
+        return self._identifier
 
     @property
-    def profile_type(self) -> str:
-        return self._profile_type
+    def category(self) -> str:
+        return self._category

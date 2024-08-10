@@ -5,8 +5,8 @@ from mojo.dataprofiles.basedataprofile import BaseDataProfile
 
 class DatabaseBasicTcpProfile(BaseDataProfile):
 
-    def __init__(self, name: str, *, profile_type: str, host: str, port: int, dbtype: str, dbname: str = None, credential: str = None):
-        super().__init__(name, profile_type=profile_type, credential=credential)
+    def __init__(self, identifier: str, *, category: str, host: str, port: int, dbtype: str, dbname: str = None, credential: str = None):
+        super().__init__(identifier, category=category, credential=credential)
         
         self._host = host
         self._port = port
