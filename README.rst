@@ -11,7 +11,6 @@ Code Organization
 * repository-setup - Scripts for homing your repository and to your checkout and machine setup
 * userguide - Where you put your user guide
 * source/packages - Put your root folder here 'source/packages/(root-module-folder)'
-* source/sphinx - This is the Sphinx documentation folder
 * workspaces - This is where you add VSCode workspaces templates and where workspaces show up when homed.
 
 ==========
