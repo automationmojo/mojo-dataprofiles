@@ -1,6 +1,6 @@
-====================================
+=====================================
 Automation Mojo Data Profiles Package
-====================================
+=====================================
 This package provides a means for managing the information associated with data source profiles.
 
 =================
