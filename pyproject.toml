@@ -3,7 +3,7 @@ name = "mojo-dataprofiles"
 description = "Automation Mojo Data Profiles Package"
 version = "2.0.0"
 authors = [ 
-    "Myron W. Walker <myron.walker@gmail.com"
+    "Myron Walker <myron.walker@gmail.com>"
 ]
 readme = "README.rst"
 license = "LICENSE.txt"
