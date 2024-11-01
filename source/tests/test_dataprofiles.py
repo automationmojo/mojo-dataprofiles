@@ -5,7 +5,11 @@ import unittest
 import yaml
 
 from mojo.dataprofiles.dataprofilemanager import DataProfileManager
+
 from mojo.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
+from mojo.dataprofiles.couchdbprofile import CouchDbProfile
+from mojo.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
+from mojo.dataprofiles.snowflakeprofile import SnowflakeProfile
 
 LANDSCAPE_CONTENT = """
 dataprofiles:
@@ -15,6 +19,23 @@ dataprofiles:
         dbname: testdb
         host: somedb.somecompany.com
         port: 8888
+        credential: dbadmin
+    -   identifier: mongodb-example
+        category: mongodb-atlas
+        connection: "mongodb+srv://<username>:<password>@automation-mojo-db.q0jpg0g.mongodb.net/"
+        credential: dbadmin
+    -   identifier: couchdb-example
+        category: couchdb
+        dbname: testdb
+        host: somedb.somecompany.com
+        port: 8888
+        credential: dbadmin
+    -   identifier: snowflake-example
+        category: snowflake
+        account: some-account 
+        warehouse: some-warehouse
+        database: some-database
+        schema: some-schema
         credential: dbadmin
 """
 
@@ -54,6 +75,46 @@ class TestCredentials(unittest.TestCase):
         assert isinstance(testprofile, DatabaseBasicTcpProfile), "The datasource profile returned should have been an 'DatabaseBasicTcpProfile'"
 
         return
+    
+    def test_couchdb_profile(self):
+
+        datasource_profiles = self.profile_mgr.profiles
+
+        profile_name = 'couchdb-example'
+        assert profile_name in datasource_profiles, f"There should have been a '{profile_name}' profile."
+
+        testprofile = self.profile_mgr.lookup_profile(profile_name)
+
+        assert isinstance(testprofile, CouchDbProfile), "The datasource profile returned should have been an 'CouchDbProfile'"
+
+        return
+
+    def test_mongodb_atlas_profile(self):
+
+        datasource_profiles = self.profile_mgr.profiles
+
+        profile_name = 'mongodb-example'
+        assert profile_name in datasource_profiles, f"There should have been a '{profile_name}' profile."
+
+        testprofile = self.profile_mgr.lookup_profile(profile_name)
+
+        assert isinstance(testprofile, MongoDBAtlasProfile), "The datasource profile returned should have been an 'MongoDBAtlasProfile'"
+
+        return
+
+    def test_snowflake_profile(self):
+
+        datasource_profiles = self.profile_mgr.profiles
+
+        profile_name = 'snowflake-example'
+        assert profile_name in datasource_profiles, f"There should have been a '{profile_name}' profile."
+
+        testprofile = self.profile_mgr.lookup_profile(profile_name)
+
+        assert isinstance(testprofile, SnowflakeProfile), "The datasource profile returned should have been an 'SnowflakeProfile'"
+
+        return
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -6,8 +6,12 @@ import os
 
 from mojo.errors.exceptions import ConfigurationError
 
+from mojo.dataprofiles.basedataprofile import BaseDataProfile
 from mojo.dataprofiles.databasebasicprofile import DatabaseBasicProfile
 from mojo.dataprofiles.databasebasictcpprofile import DatabaseBasicTcpProfile
+from mojo.dataprofiles.couchdbprofile import CouchDbProfile
+from mojo.dataprofiles.mongodbatlasprofile import MongoDBAtlasProfile
+from mojo.dataprofiles.snowflakeprofile import SnowflakeProfile
 
 logger = logging.getLogger()
 
@@ -79,10 +83,17 @@ class DataProfileManager:
                         category = profile['category']
 
                         if category == DatabaseBasicTcpProfile.category:
-                            DatabaseBasicTcpProfile.validate(profile)
                             credobj = DatabaseBasicTcpProfile(**profile)
                             self._profiles[ident] = credobj
-                            
+                        elif category == CouchDbProfile.category:
+                            credobj = CouchDbProfile(**profile)
+                            self._profiles[ident] = credobj
+                        elif category == MongoDBAtlasProfile.category:
+                            credobj = MongoDBAtlasProfile(**profile)
+                            self._profiles[ident] = credobj
+                        elif category == SnowflakeProfile.category:
+                            credobj = SnowflakeProfile(**profile)
+                            self._profiles[ident] = credobj
                         else:
                             warnmsg = f"Unknown category '{category}' found in database profile '{ident}'"
                             logger.warn(warnmsg)
@@ -106,10 +117,47 @@ class DataProfileManager:
                     errmsg = os.linesep.join(errmsg_lines)
                     raise ConfigurationError(errmsg)
 
-            except KeyError:
+            except KeyError as kerr:
                 errmsg = f"No 'dataprofiles' field found."
                 raise ConfigurationError(errmsg)
         return
     
-    def _validate_datasource_profiles(self, profilesß_list: List[Dict[str, str]]) -> Tuple[List[str], List[str]]:
-        return [], []
+    def _validate_datasource_profiles(self, profiles_list: List[Dict[str, str]]) -> Tuple[List[str], List[str]]:
+
+        errors = []
+        warns = []
+
+        for profile in profiles_list:
+
+            base_errors, base_warns = BaseDataProfile.validate(profile)
+
+            errors.extend(base_errors)
+            warns.extend(base_warns)
+
+            if len(base_errors) == 0:
+
+                category = profile['category']
+                
+                if category == DatabaseBasicTcpProfile.category:
+                    prof_errors, prof_warns = DatabaseBasicTcpProfile.validate(profile)
+                    errors.extend(prof_errors)
+                    warns.extend(prof_warns)
+                elif category == CouchDbProfile.category:
+                    prof_errors, prof_warns = CouchDbProfile.validate(profile)
+                    errors.extend(prof_errors)
+                    warns.extend(prof_warns)
+                elif category == MongoDBAtlasProfile.category:
+                    prof_errors, prof_warns = MongoDBAtlasProfile.validate(profile)
+                    errors.extend(prof_errors)
+                    warns.extend(prof_warns)
+                elif category == SnowflakeProfile.category:
+                    prof_errors, prof_warns = SnowflakeProfile.validate(profile)
+                    errors.extend(prof_errors)
+                    warns.extend(prof_warns)
+                else:
+                    ident = profile["identifier"]
+                    warnmsg = f"Unknown category '{category}' found in database profile '{ident}'"
+                    logger.warn(warnmsg)
+
+                
+        return errors, warns

@@ -23,4 +23,20 @@ class DatabaseBasicProfile(BaseDataProfile):
 
     @classmethod
     def validate(cls, profile_info: Dict[str, str]):
-        return
+        
+        errors = []
+        warns = []
+
+        if "credential" not in profile_info:
+            errmsg = f"The 'basic-profile' profile must have an 'credential' field."
+            errors.append(errmsg)
+        
+        if "dbname" not in profile_info:
+            errmsg = f"The 'basic-profile' profile must have an 'dbname' field."
+            errors.append(errmsg)
+        
+        if "dbtype" not in profile_info:
+            errmsg = f"The 'basic-profile' profile must have an 'dbtype' field."
+            errors.append(errmsg)
+
+        return errors, warns

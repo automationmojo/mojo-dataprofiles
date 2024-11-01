@@ -13,6 +13,21 @@ files = [
 ]
 
 [[package]]
+name = "mojo-interfaces"
+version = "2.0.1"
+description = "Automation Mojo Interfaces Package"
+category = "main"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "mojo_interfaces-2.0.1-py3-none-any.whl", hash = "sha256:673d1424add15cec23b1a999dbdee8005bc032ba5033a64de948a0e64a8624f3"},
+    {file = "mojo_interfaces-2.0.1.tar.gz", hash = "sha256:01e4ae1abbec1b70fcc284518a1f98e9569114e46d178b6ea6cee4d0c8eca173"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.11.0,<5.0.0"
+
+[[package]]
 name = "pyyaml"
 version = "6.0.2"
 description = "YAML parser and emitter for Python"
@@ -75,7 +90,19 @@ files = [
     {file = "pyyaml-6.0.2.tar.gz", hash = "sha256:d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e"},
 ]
 
+[[package]]
+name = "typing-extensions"
+version = "4.12.2"
+description = "Backported and Experimental Type Hints for Python 3.8+"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
+    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "01d61991d11469c341b40efe48b75a45780a7b59b98f024020c7e2fabbc56464"
+content-hash = "4bcc5cd0c6f2a6d9b626ced410912ad362d529c8e0262e683e4be90029f2a7db"
