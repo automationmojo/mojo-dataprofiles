@@ -2,14 +2,14 @@
 
 [[package]]
 name = "mojo-errors"
-version = "2.0.0"
+version = "2.0.3"
 description = "Automation Mojo Errors Module"
 category = "main"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "mojo_errors-2.0.0-py3-none-any.whl", hash = "sha256:dd0acddf8ec0ae7978b224aed6c1217d0c96e7f5312976a38706598da2831132"},
-    {file = "mojo_errors-2.0.0.tar.gz", hash = "sha256:05bac3948cf9add042057a6b15615ba3edde425851d0b019721e82bfe173b96b"},
+    {file = "mojo_errors-2.0.3-py3-none-any.whl", hash = "sha256:282c462723edbc35d8ad50d16f4bd2eef9424934fd01e35d0cd9ed37ac6ca5eb"},
+    {file = "mojo_errors-2.0.3.tar.gz", hash = "sha256:f1ddb43376e9f9c6c54a76a51ee977837e1e7d2bf07c66aaf6def98c68bc3d17"},
 ]
 
 [[package]]
@@ -105,4 +105,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0"
-content-hash = "4bcc5cd0c6f2a6d9b626ced410912ad362d529c8e0262e683e4be90029f2a7db"
+content-hash = "d50d02972eb735105019cc406b00516236931bf0a0aa09b690da61e2c1251835"
